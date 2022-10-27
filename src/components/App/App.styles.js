@@ -1,7 +1,7 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 export const CommonStyles = styled.div`
-  --main-font-family: "Play", sans-serif;
+  --main-font-family: 'Play', sans-serif;
   --main-bg-color: #fceed1;
   --secondary-bg-color: #f2d53c;
   --third-bg-color: #ffffff;

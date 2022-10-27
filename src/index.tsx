@@ -3,7 +3,9 @@ import { hydrateRoot } from "react-dom/client";
 import { StaticRouter } from "react-router-dom/server";
 import { BrowserRouter } from "react-router-dom";
 
-import App from "./App/App";
+import App from "./components/App/App";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
 interface ServerProps {
   url: string;
 }
@@ -11,9 +13,11 @@ interface ServerProps {
 export function Server({ url }: ServerProps) {
   console.log("Server");
   return (
-    <StaticRouter location={url}>
-      <App />
-    </StaticRouter>
+    <Provider store={store}>
+      <StaticRouter location={url}>
+        <App />
+      </StaticRouter>
+    </Provider>
   );
 }
 

@@ -6,9 +6,6 @@ import fs from "fs";
 import path from "path";
 
 export function renderMiddleware(req: Request, res: Response) {
-  if (req.url === "/") {
-    return res.redirect("/leaderboard");
-  }
   //содержание файла собранного вэбпаком для запуска клиента в ноде
   const ssrClient: string = fs
     .readFileSync(path.join(__dirname, "ssrClient.js"))
