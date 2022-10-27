@@ -47,7 +47,13 @@ export function renderMiddleware(req: Request, res: Response) {
         />
         <title>Doodle</title>
       </head>
-      <body>
+      <body
+        style={{
+          margin: 0,
+          boxSizing: "border-box",
+          fontFamily: "var(--main-font-family)",
+        }}
+      >
         <noscript>You need to enable JavaScript to run this app.</noscript>
         <div dangerouslySetInnerHTML={{ __html: reactHtml }} id="root"></div>
         {/* это тот же index.tsx из src для выполнения в браузере */}

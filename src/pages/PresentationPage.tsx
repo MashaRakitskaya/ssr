@@ -10,10 +10,9 @@ const PresentationPage = () => {
   return (
     <>
       <h1>Presentation Page</h1>
-
       <Link to={LEADERBOARD_PATH}>Go Leaderboard</Link>
       {isPresentationPathname && <div>useLocation()</div>}
-      <img src={svg} width="200" height="200" />
+      <img src={svg} width="200" height="200" alt="poverImg" />
     </>
   );
 };
