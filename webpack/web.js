@@ -16,7 +16,7 @@ module.exports = {
   //  resolve: { modules: ["src", "node_modules"] }, искать в папках этих
   resolve: {
     modules: ["src", "node_modules"],
-    extensions: [".ts", ".tsx"],
+    extensions: ["*", ".js", ".jsx", ".json", ".ts", ".tsx", ".css"],
     plugins: [new TsconfigPathsPlugin({ configFile: "./tsconfig.json" })],
   },
   module: {
@@ -25,6 +25,11 @@ module.exports = {
         test: /\.tsx?$/,
         exclude: /node_modules/,
         use: { loader: "babel-loader" },
+      },
+      {
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        use: ["@svgr/webpack", "file-loader"],
       },
     ],
   },

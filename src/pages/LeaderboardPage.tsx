@@ -6,10 +6,7 @@ const LeaderboardPage = () => {
   const [count, setCount] = useState(6);
   const [loy, setLow] = useState(false);
 
-  console.log("outside useEffect");
-
   useEffect(() => {
-    console.log("inside useEffect");
     if (count > 5) {
       setLow(true);
     }
