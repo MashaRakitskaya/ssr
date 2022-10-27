@@ -4,7 +4,6 @@ import ReactDOMServer, { renderToStaticMarkup } from "react-dom/server";
 import requireFromString from "require-from-string";
 import fs from "fs";
 import path from "path";
-import { router } from "./router";
 
 export function renderMiddleware(req: Request, res: Response) {
   if (req.url === "/") {
@@ -21,9 +20,7 @@ export function renderMiddleware(req: Request, res: Response) {
   const { Server } = module;
   const { url } = req;
 
-  const reactHtml = ReactDOMServer.renderToString(
-    router({ serverApp: Server({ req }), url })
-  );
+  const reactHtml = ReactDOMServer.renderToString(Server({ url }));
 
   const html = `${renderToStaticMarkup(
     <html lang="en">

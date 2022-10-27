@@ -1,12 +1,20 @@
 import React from "react";
 import { hydrateRoot } from "react-dom/client";
+import { StaticRouter } from "react-router-dom/server";
 import { BrowserRouter } from "react-router-dom";
+
 import App from "./App/App";
+interface ServerProps {
+  url: string;
+}
 
-export function Server() {
+export function Server({ url }: ServerProps) {
   console.log("Server");
-
-  return <App />;
+  return (
+    <StaticRouter location={url}>
+      <App />
+    </StaticRouter>
+  );
 }
 
 export function Client() {
