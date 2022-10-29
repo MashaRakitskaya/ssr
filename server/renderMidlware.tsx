@@ -15,6 +15,7 @@ export function renderMiddleware(req: Request, res: Response) {
   const module = requireFromString(ssrClient);
 
   const { Server } = module;
+
   const { url } = req;
 
   const reactHtml = ReactDOMServer.renderToString(Server({ url }));

@@ -6,12 +6,32 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./components/App/App";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
+
 interface ServerProps {
   url: string;
 }
 
+const newReducerWithFetchUser = {
+  api: {
+    queries: {
+      "fetchUser(undefined)": {
+        data: {
+          first_name: "",
+        },
+      },
+    },
+  },
+};
+
 export function Server({ url }: ServerProps) {
   console.log("Server");
+
+  const nextReducer = () => {
+    return newReducerWithFetchUser;
+  };
+
+  store.replaceReducer(nextReducer as any);
+
   return (
     <Provider store={store}>
       <StaticRouter location={url}>
@@ -31,7 +51,9 @@ export function Client() {
     root,
     <React.StrictMode>
       <BrowserRouter>
-        <App />
+        <Provider store={store}>
+          <App />
+        </Provider>
       </BrowserRouter>
     </React.StrictMode>
   );
